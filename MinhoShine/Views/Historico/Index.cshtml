@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MinhoShine.Models.Servico>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .tabela {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center">Historico de Servicos</h2>
+
+    <br />
+
+    <table>
+        <tr>
+            <th class="tabela">Morada</th>
+            <th class="tabela">Preco</th>
+            <th class="tabela">Dia</th>
+            <th class="tabela">Mes</th>
+            <th class="tabela">Ano</th>
+            <th class="tabela">Hora</th>
+            <th class="tabela">Minutos</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="tabela">@item.Morada</td>
+                <td class="tabela">@item.Preco</td>
+                <td class="tabela">@item.Dia</td>
+                <td class="tabela">@item.Mes</td>
+                <td class="tabela">@item.Ano</td>
+                <td class="tabela">@item.Hora</td>
+                <td class="tabela">@item.Minutos</td>
+            </tr>
+        }
+    </table>
+
+    <br />
+    <br />
+    <button id="voltar" onclick="location.href='@Url.Action("LoginPage", "Login")'">Voltar</button>
+
+</body>
+</html>
+
+

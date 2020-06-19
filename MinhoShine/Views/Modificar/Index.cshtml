@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+    #TituloRegister {
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    #Paragrafo {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .alterarrbtn {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    label {
+        display: inline-block;
+        width: 250px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+</style>
+
+<h2 align="center"><b>Modificar Dados</b></h2>
+
+<body>
+    <div align="center">
+        @using (Html.BeginForm("Modificar", "Modificar", FormMethod.Post))
+        {
+                <br />
+                <input id="name" type="text" name="Nome" value="@Session["username"]">
+                <p></p>
+
+                <input id="email" type="email" name="Email" value="@Session["email"]">
+                <p></p>
+
+                <input id="address" type="text" name="Morada" value="@Session["morada"]">
+                <p></p>
+
+                <input id="Password" type="password" name="Password" value="@Session["password"]">
+                <p></p>
+
+                <input id="Contact" type="tel" name="Contacto" value="@Session["contacto"]">
+                <p></p>
+
+                <button type="submit" class="alterarrbtn">Alterar Dados</button>
+        }
+        <br />
+        <button id="voltar" onclick="location.href='@Url.Action("LoginPage", "Login")'">Voltar</button>
+    </div>
+</body>
+</html>

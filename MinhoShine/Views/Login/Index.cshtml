@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MinhoShine.Models.Cliente>
+<!DOCTYPE html>
+<html>
+
+<!--Modificações no tamanho, forma, cor, etc dos Botões e Caixas de Texto-->
+<style>
+    #TituloLogin {
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    .loginbtn {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    label {
+        display: inline-block;
+        width: 250px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+</style>
+
+<head>
+    <script type="text/javascript">
+        if (@TempData["registo"] == 1) {
+            swal({
+                title: 'Congratulations',
+                text: 'Registo Efetuado com Sucesso!',
+                type: 'success',
+                showConfirmButton: false,
+                timer: 900
+            });
+        }
+    </script>
+    
+    <script type="text/javascript">
+        if (@ViewData["failed"] == 1) {
+            swal({
+                title: 'Oops...',
+                text: 'Email ou Password Incorretos',
+                type: 'error',
+                showConfirmButton: false,
+                timer: 900
+            });
+        }
+    </script>
+
+</head>
+
+<h2 id="TituloLogin"><b>Login</b></h2>
+
+<body>
+    <div align="center">
+        @if (!Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                @Html.ValidationSummary(false)
+                <fieldset>
+                    <input id="email" type="email" placeholder="Email" name="Email" required>
+                    <p></p>
+
+                    <input id="password" type="password" placeholder="Password" name="Password" required>
+                    <p></p>
+                    
+                    <button type="submit" class="loginbtn">Login</button>
+                </fieldset>
+            }
+        }
+        <p></p>
+        <div><b>Não tem conta? Carregue @Html.ActionLink("aqui", "Index", "Register", new { }, new { }) para criar uma</b></div>
+        <div><b>@Html.ActionLink("Homepage", "Index", "Home", new { }, new { })</b></div>
+    </div>
+</body>
+</html>

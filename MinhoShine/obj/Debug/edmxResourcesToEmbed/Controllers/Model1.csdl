@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MinhoShineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="180" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Morada" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contacto" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Recomendacaos" Relationship="Self.FKRecomendac466557" FromRole="Cliente" ToRole="Recomendacao" />
+    <NavigationProperty Name="Servicoes" Relationship="Self.FKServico965239" FromRole="Cliente" ToRole="Servico" />
+  </EntityType>
+  <EntityType Name="Funcionario">
+    <Key>
+      <PropertyRef Name="IdFuncionario" />
+    </Key>
+    <Property Name="IdFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contacto" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Servicoes" Relationship="Self.FKServico777799" FromRole="Funcionario" ToRole="Servico" />
+  </EntityType>
+  <EntityType Name="Recomendacao">
+    <Key>
+      <PropertyRef Name="IdRecomendacao" />
+    </Key>
+    <Property Name="IdRecomendacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mensagem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FKRecomendac466557" FromRole="Recomendacao" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Servico">
+    <Key>
+      <PropertyRef Name="IdServico" />
+    </Key>
+    <Property Name="IdServico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Morada" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Duracao" Type="Single" Nullable="false" />
+    <Property Name="Preco" Type="Single" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Dia" Type="Int32" Nullable="false" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="Ano" Type="Int32" Nullable="false" />
+    <Property Name="Hora" Type="Int32" Nullable="false" />
+    <Property Name="Minutos" Type="Int32" Nullable="false" />
+    <Property Name="Limpeza" Type="Int32" Nullable="false" />
+    <Property Name="Colchoes" Type="Int32" Nullable="false" />
+    <Property Name="Lavandaria" Type="Int32" Nullable="false" />
+    <Property Name="Engomaria" Type="Int32" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="IdFuncionario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FKServico965239" FromRole="Servico" ToRole="Cliente" />
+    <NavigationProperty Name="Funcionario" Relationship="Self.FKServico777799" FromRole="Servico" ToRole="Funcionario" />
+  </EntityType>
+  <Association Name="FKRecomendac466557">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Recomendacao" Type="Self.Recomendacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Recomendacao">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKServico965239">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Servico" Type="Self.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKServico777799">
+    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+    <End Role="Servico" Type="Self.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="IdFuncionario" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="IdFuncionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MinhoShineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Funcionarios" EntityType="Self.Funcionario" />
+    <EntitySet Name="Recomendacaos" EntityType="Self.Recomendacao" />
+    <EntitySet Name="Servicoes" EntityType="Self.Servico" />
+    <AssociationSet Name="FKRecomendac466557" Association="Self.FKRecomendac466557">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Recomendacao" EntitySet="Recomendacaos" />
+    </AssociationSet>
+    <AssociationSet Name="FKServico965239" Association="Self.FKServico965239">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Servico" EntitySet="Servicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FKServico777799" Association="Self.FKServico777799">
+      <End Role="Funcionario" EntitySet="Funcionarios" />
+      <End Role="Servico" EntitySet="Servicoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

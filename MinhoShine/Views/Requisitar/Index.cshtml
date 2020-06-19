@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+
+<style>
+
+    .escolhas {
+        margin-top: 5%;
+        font-size: 25px;
+    }
+
+    .data, .Hora {
+        width: 75px;
+    }
+
+    #Paragrafo {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #data {
+        margin-left: 1.75%;
+    }
+
+    #seguinte {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    #localidade {
+        margin-right: 3.8%;
+    }
+
+    #seguinte {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    #Colchoes {
+        width: 35px;
+    }
+
+    #voltar {
+        margin-left: 85%;
+    }
+
+
+</style>
+
+<h2 align="center">Página para Requisitar Serviços @Session["username"]</h2>
+<p id="Paragrafo"> Preencha tudo para poder requisitar um serviço</p>
+
+
+<body>
+    <div align="center" class="escolhas">
+        @using (Html.BeginForm("Requisitar", "Requisitar", FormMethod.Post))
+        {
+            <label>Morada</label>
+            <input id="Morada" name="Morada" type="text" value="@Session["morada"]" required/>
+            <br />
+
+            <br />
+            <label>Descrição</label>
+            <input id="Descricao" name="Descricao" type="text" value="Minho Shine" required/>
+            <br />
+
+            <br />
+            <label id="data">Data</label>
+            <input name="Dia" id="dia" type="number" class="data" placeholder="Dia" required/>
+            <label>/</label>
+            <input name="Mes" id="mes" type="number" class="data" placeholder="Mês" required/>
+            <label>/</label>
+            <input name="Ano" id="ano" type="number" class="data" placeholder="Ano" required/>
+            <br />
+            <label>Hora</label>
+            <input name="Hora" id="hora" type="number" class="Hora" placeholder="Hora" required/>
+            <label>:</label>
+            <input name="Minutos" id="minutos" type="number" class="Hora" placeholder="Mins" required/>
+            <br />
+
+            <br />
+            <label> Limpeza Doméstica: </label>
+            <input id="Limpeza" name="Limpeza" type="number" placeholder="0 = Nao, 1 = Sim" required/>
+            <br />
+            <label> Numero de Colchões: </label>
+            <input id="Colchoes" name="Colchoes" type="number" required/>
+            <br />
+            <label> Lavandaria: </label>
+            <input id="Lavandaria" name="Lavandaria" type="number" placeholder="0 = Nao, 1 = Sim" required/>
+            <br />
+            <label> Engomadoria: </label>
+            <input id="Engomaria" name="Engomaria" type="number" placeholder="0 = Nao, 1 = Sim" required/>
+            <br />
+
+            <br />
+            <button type="submit" id="seguinte"> Seguinte </button>
+        }
+        </div>
+    <button id="voltar" onclick="location.href='@Url.Action("LoginPage", "Login")'">Voltar</button>
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+
+    .labels{
+        font-size: 20px;
+        margin-top: 3%;
+        margin-right: 13%;
+    }
+
+    #concluir {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    .valores{
+        font-size: 16px
+    }
+
+    #entidade{
+        margin-right: 13%;
+    }
+
+    #valorEntidade{
+        margin-right: 3%;
+    }
+
+    #referencia{
+        margin-right: 12%;
+    }
+
+    #valorReferencia{
+        margin-right: 2%;
+
+    }
+
+</style>
+
+<h2 align="center">Dados de Pagamento</h2>
+
+<body>
+    <div align="center">
+        <br />
+        <label class="labels" id="entidade">Entidade</label>
+        <label class="valores" id="valorEntidade">24271</label>
+        <br />
+        <label class="labels" id="referencia">Referencia</label>
+        <label class="valores" id="valorReferencia">@Session["Referencia"]</label>
+        <br />
+        <label class="labels" id="valor">Valor</label>
+        <label class="valores" id="preco">@Session["preco"].00 €</label>
+        <br />
+        <br />
+        <br />
+        <button id="concluir" onclick="location.href='@Url.Action("Concluir", "Requisitar")'">Concluir</button>
+    </div>
+</body>
+</html>

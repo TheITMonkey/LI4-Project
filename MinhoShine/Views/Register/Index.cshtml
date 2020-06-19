@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+    #TituloRegister {
+        text-align: center; 
+        margin-top: 5%;
+    }
+    #Paragrafo{
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .registerbtn {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    label {
+        display: inline-block;
+        width: 250px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+</style>
+
+<h2 id="TituloRegister"><b>Registo</b></h2>
+<p id="Paragrafo"> Preencha o formulário para criar a sua conta</p>
+
+<body>
+    <div align="center">
+        @using (Html.BeginForm("Register", "Register", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <input id="name" type="text" placeholder="Nome" name="Nome" required>
+                <p></p>
+
+                <input id="email" type="email" placeholder="Email" name="Email" required>
+                <p></p>
+
+                <input id="address" type="text" placeholder="Morada" name="Morada" required>
+                <p></p>
+
+                <input id="Password" type="password" placeholder="Password" name="Password" required>
+                <p></p>
+
+                <input id="Contact" type="tel" placeholder="Contacto" name="Contacto" required>
+                <p></p> 
+
+                <button type="submit" class="registerbtn">Registar</button>
+            </fieldset>
+        }   
+        <p></p>
+        <div><b>Já tem conta? Carregue @Html.ActionLink("aqui", "Index", "Login", new { }, new { }) para efetuar o Login</b></div>
+        <div><b>@Html.ActionLink("Homepage", "Index", "Home", new { }, new { })</b></div>
+    </div>
+</body>
+</html>

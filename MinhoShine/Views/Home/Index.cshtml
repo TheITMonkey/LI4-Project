@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MinhoShine.Models.Cliente>
+
+<!DOCTYPE html>
+<html>
+<style>
+    #Titulo {
+        text-align: center;
+    }
+
+    .botoes {
+        margin-left:75%;
+        text-align: center;
+    }
+
+    .botao {
+        background-color: #44c767;
+        -moz-border-radius: 28px;
+        -webkit-border-radius: 28px;
+        border-radius: 28px;
+        border: 1px solid #18ab29;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 17px;
+        padding: 16px 31px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #2f6627;
+    }
+
+    #colchoes{
+        margin-top:5%;
+        margin-left:4%;
+    }
+
+    #engomadoria{
+        margin-top: 5%;
+        margin-left: 55%
+    }
+
+    #lavandaria{
+        margin-top: 10%;
+        margin-left:4%;
+    }
+
+    #limpeza{
+        margin-top:10%;
+        margin-left: 55%;
+    }
+
+</style>
+
+<h1 id="Titulo">@ViewBag.Titulo</h1>
+
+<body>
+    <div class="botoes">
+        <button class="botao" type="button" onclick="location.href='@Url.Action("Index", "Login")'">Login</button>
+        <button class="botao" type="button" onclick="location.href='@Url.Action("Index", "Register")'">Registar</button>
+    </div>
+    
+    <div>
+        <img id="colchoes" width="200" height="150" src="~/Images/colchoes.jpg" />
+        <img id="engomadoria" width="200" height="150" src="~/Images/engomadoria.jpg" />
+        <br />
+        <img id="lavandaria" width="200" height="150" src="~/Images/lavandariqa.jpg" />
+        <img id="limpeza" width="200" height="150" src="~/Images/limpeza domestica.jpg" />
+        <br />
+        <br />
+        <br/>
+    </div>
+    <br />
+</body>
+</html>

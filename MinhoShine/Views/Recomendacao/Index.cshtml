@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<style>
+
+    textarea{
+        height:100%;
+        width:100%;
+    }
+
+    #enviar {
+        background-color: #0276fd;
+        color: white;
+        padding: 16px 18px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+
+    #Email{
+        width: 300px;
+        margin-left:3%;
+    }
+
+</style>
+
+
+
+<h2 align="center">Recomendacao</h2>
+
+<body>
+    <div align="center">
+        @using (Html.BeginForm("Recomendacao", "Recomendacao", FormMethod.Post))
+        {
+
+            <form>
+                <br />
+                <br />
+                Email:
+                <input id="Email" name="Email" type="email" required />
+                <br />
+                <br />
+                Mensagem:
+                <textarea id="Mensagem" name="Mensagem" rows="7" cols="100" required></textarea>
+                <br />
+
+                <br />
+                <button id="enviar" type="submit">Enviar</button>
+            </form>
+        }
+        <br />
+        <button id="voltar" onclick="location.href='@Url.Action("LoginPage", "Login")'">Voltar</button>
+    </div>
+</body>
+
+
+
+
+</html>
